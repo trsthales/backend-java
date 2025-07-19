@@ -2,8 +2,7 @@ package com.user.api.model;
 
 import java.util.Date;
 
-import com.user.api.dto.UserDTO;
-
+import dto.UserDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

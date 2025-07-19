@@ -1,7 +1,6 @@
 package com.product.api.model;
 
-import com.product.api.dto.ProductDTO;
-
+import dto.ProductDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

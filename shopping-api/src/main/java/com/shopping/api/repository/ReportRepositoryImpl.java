@@ -1,12 +1,13 @@
 package com.shopping.api.repository;
 
 import java.math.BigInteger;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
-import com.shopping.api.dto.ShopReportDTO;
 import com.shopping.api.model.Shop;
 
+import dto.ShopReportDTO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
@@ -17,7 +18,7 @@ public class ReportRepositoryImpl implements ReportRepository {
 	private EntityManager entityManager;
 
 	@Override
-	public List<Shop> getShopByFilters(Date dataInicio, Date dataFim, Float valorMinimo) {
+	public List<Shop> getShopByFilters(LocalDate dataInicio, LocalDate dataFim, Float valorMinimo) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("select s ");
 		sb.append("from shop s ");

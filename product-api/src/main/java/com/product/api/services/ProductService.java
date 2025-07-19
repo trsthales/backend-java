@@ -7,36 +7,47 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.product.api.dto.ProductDTO;
+import com.product.api.converter.DTOConverter;
 import com.product.api.model.Product;
+import com.product.api.repository.CategoryRepository;
 import com.product.api.repository.ProductRepository;
+
+import dto.ProductDTO;
+import exception.CategoryNotFoundException;
+import exception.ProductNotFoundException;
 
 @Service
 public class ProductService {
 	@Autowired
 	private ProductRepository productRepository;
+	@Autowired
+	private CategoryRepository categoryRepository;
 
 	public List<ProductDTO> getAll() {
 		List<Product> products = productRepository.findAll();
-		return products.stream().map(ProductDTO::convert).collect(Collectors.toList());
+		return products.stream().map(DTOConverter::convert).collect(Collectors.toList());
 	}
 
 	public List<ProductDTO> getProductByCategoryId(Long categoryId) {
 		List<Product> products = productRepository.getProductByCategory(categoryId);
-		return products.stream().map(ProductDTO::convert).collect(Collectors.toList());
+		return products.stream().map(DTOConverter::convert).collect(Collectors.toList());
 	}
 
 	public ProductDTO findByProductIdentifier(String productIdentifier) {
 		Product product = productRepository.findByProductIdentifier(productIdentifier);
 		if (product != null) {
-			return ProductDTO.convert(product);
+			return DTOConverter.convert(product);
 		}
-		return null;
+		throw new ProductNotFoundException();
 	}
 
 	public ProductDTO save(ProductDTO productDTO) {
+		Boolean existsCategory = categoryRepository.existsById(productDTO.getCategoryDTO().getId());
+		if (!existsCategory) { 
+			throw new CategoryNotFoundException();
+			}
 		Product product = productRepository.save(Product.convert(productDTO));
-		return ProductDTO.convert(product);
+		return DTOConverter.convert(product);
 	}
 
 	public void delete(long productId) {
@@ -44,5 +55,6 @@ public class ProductService {
 		if (product.isPresent()) {
 			productRepository.delete(product.get());
 		}
+		throw new ProductNotFoundException();
 	}
 }

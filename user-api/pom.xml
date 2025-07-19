@@ -60,6 +60,11 @@
     		<version>11.7.2</version>
     		<scope>runtime</scope>
 		</dependency>
+		<dependency>
+			<groupId>shopping-client</groupId>
+			<artifactId>shopping-client</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
