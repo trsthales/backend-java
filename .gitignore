@@ -3,7 +3,17 @@ user-api/.project
 user-api/.settings/
 user-api/target/
 
-product-api/.classpath
-product-api/.project
+shopping-client/.classpath
+shopping-client/.project
+shopping-client/.settings/
+shopping-client/target/
+
 product-api/.settings/
 product-api/target/
+product-api/.classpath
+product-api/.project
+
+shopping-api/.classpath
+shopping-api/.project
+shopping-api/.settings/
+shopping-api/target/
