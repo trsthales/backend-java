@@ -1,6 +1,6 @@
 package dto;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import lombok.Data;
 
@@ -11,7 +11,8 @@ public class UserDTO {
 	private String endereco;
 	private String email;
 	private String telefone;
-	private Date dataCadastro;
+	private LocalDateTime dataCadastro;
+	private String key;
 
 
 }

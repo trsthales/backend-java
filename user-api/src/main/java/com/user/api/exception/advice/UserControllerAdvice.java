@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import dto.ErrorDTO;
 import exception.UserNotFoundException;
 
-@ControllerAdvice(basePackages = "com.user.api.controller")
+@ControllerAdvice(basePackages = "com.user.api.controllers")
 public class UserControllerAdvice {
 	@ResponseBody
 	@ResponseStatus(HttpStatus.NOT_FOUND)

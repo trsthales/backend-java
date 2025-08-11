@@ -16,7 +16,7 @@ import dto.ErrorDTO;
 import exception.CategoryNotFoundException;
 import exception.ProductNotFoundException;
 
-@ControllerAdvice(basePackages = "com.product.api.controller")
+@ControllerAdvice(basePackages = "com.product.api.controllers")
 public class ProductControllerAdvice {
 
 	@ResponseBody

@@ -3,6 +3,7 @@ package com.shopping.api.exception.advice;
 import java.time.LocalDateTime;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -11,6 +12,7 @@ import dto.ErrorDTO;
 import exception.ProductNotFoundException;
 import exception.UserNotFoundException;
 
+@ControllerAdvice("com.shopping.api.controllers")
 public class ShoppingControllerAdvice {
 	@ResponseBody
 	@ResponseStatus(HttpStatus.NOT_FOUND)

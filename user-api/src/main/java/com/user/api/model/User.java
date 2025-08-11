@@ -1,6 +1,6 @@
 package com.user.api.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import dto.UserDTO;
 import jakarta.persistence.Entity;
@@ -19,9 +19,10 @@ public class User {
 	private String nome;
 	private String cpf;
 	private String endereco;
+	private String key;
 	private String email;
 	private String telefone;
-	private Date dataCadastro;
+	private LocalDateTime dataCadastro;
 
 	public static User convert(UserDTO userDTO) {
 		User user = new User();
@@ -29,6 +30,7 @@ public class User {
 		user.setEndereco(userDTO.getEndereco());
 		user.setCpf(userDTO.getCpf());
 		user.setEmail(userDTO.getEmail());
+		user.setKey(userDTO.getKey());
 		user.setTelefone(userDTO.getTelefone());
 		user.setDataCadastro(userDTO.getDataCadastro());
 		return user;

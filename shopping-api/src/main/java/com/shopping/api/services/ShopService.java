@@ -15,6 +15,7 @@ import com.shopping.api.repository.ShopRepository;
 import dto.ItemDTO;
 import dto.ProductDTO;
 import dto.ShopDTO;
+import dto.UserDTO;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -48,19 +49,19 @@ public class ShopService {
 		return null;
 	}
 
-	public ShopDTO save(ShopDTO shopDTO) {
-		if (userService.getUserByCpf(shopDTO.getUserIdentifier()) == null) {
-			return null;
-		}
-		if (!validateProducts(shopDTO.getItems())) {
-			return null;
-		}
-		shopDTO.setTotal(shopDTO.getItems().stream().map(x -> x.getPrice()).reduce((float) 0, Float::sum));
-
+	public ShopDTO save(ShopDTO shopDTO, String key) {
+		UserDTO userDTO = userService.getUserByCpf(shopDTO.getUserIdentifier(), key);
+		validateProducts(shopDTO.getItems());
+		
+		shopDTO.setTotal(shopDTO.getItems()
+				  .stream()
+				  .map(x -> x.getPrice())
+				  .reduce((float) 0, Float::sum));
+		
 		Shop shop = Shop.convert(shopDTO);
 		shop.setDate(LocalDateTime.now());
-		shop = shopRepository.save(shop);
 		
+		shop = shopRepository.save(shop);
 		return DTOConverter.convert(shop);
 	}
 
