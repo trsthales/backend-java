@@ -54,7 +54,23 @@ public class UserService {
 		if (user != null) {
 			return DTOConverter.convert(user);
 		}
-		throw new UserNotFoundException(); 
+		throw new UserNotFoundException();
+	}
+
+	public UserDTO editUser(Long userId, UserDTO userDTO) {
+		User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException());
+		if (userDTO.getEmail() != null && !user.getEmail().equals(userDTO.getEmail())) {
+			user.setEmail(userDTO.getEmail());
+		}
+		if (userDTO.getTelefone() != null && !user.getTelefone().equals(userDTO.getTelefone())) {
+			user.setTelefone(userDTO.getTelefone());
+		}
+		if (userDTO.getEndereco() != null && !user.getEndereco().equals(userDTO.getEndereco())) {
+			user.setEndereco(userDTO.getEndereco());
+		}
+
+		user = userRepository.save(user);
+		return DTOConverter.convert(user);
 	}
 
 	public List<UserDTO> queryByName(String name) {
