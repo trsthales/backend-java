@@ -1,5 +1,10 @@
+exception/UserNotFoundException.class
 dto/ProductDTO.class
-dto/CategoryDTO.class
 dto/UserDTO.class
+dto/ShopReportDTO.class
+exception/CategoryNotFoundException.class
 dto/ShopDTO.class
+dto/ErrorDTO.class
+dto/CategoryDTO.class
 dto/ItemDTO.class
+exception/ProductNotFoundException.class

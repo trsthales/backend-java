@@ -19,6 +19,9 @@ public class GatewayApplication {
 
 	@Value("${PRODUCT_API_URL:http://localhost:8081}")
 	private String productApiURL;
+	
+	@Value("${CATEGORY_API_URL:http://localhost:8081}")
+	private String categoryApiURL;
 
 	@Value("${SHOPPING_API_URL:http://localhost:8082}")
 	private String shoppingApiURL;
@@ -30,6 +33,8 @@ public class GatewayApplication {
 						.uri(userApiURL))
 				.route("product_route", r -> r.path("/product/**")
 						.uri(productApiURL))
+				.route("category_route", r -> r.path("/category/**")
+						.uri(categoryApiURL))
 				.route("shopping_route", r -> r.path("/shopping/**")
 						.uri(shoppingApiURL))
 				.build();

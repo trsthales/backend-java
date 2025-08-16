@@ -34,18 +34,20 @@ public class ProductService {
 	}
 
 	public ProductDTO findByProductIdentifier(String productIdentifier) {
-		Product product = productRepository.findByProductIdentifier(productIdentifier);
-		if (product != null) {
-			return DTOConverter.convert(product);
+		List<Product> products = productRepository.findByProductIdentifier(productIdentifier);
+		if (products.isEmpty()) {
+			throw new ProductNotFoundException();
+		}else {
+			return DTOConverter.convert(products.get(0));
 		}
-		throw new ProductNotFoundException();
+		
 	}
 
 	public ProductDTO save(ProductDTO productDTO) {
 		Boolean existsCategory = categoryRepository.existsById(productDTO.getCategoryDTO().getId());
-		if (!existsCategory) { 
+		if (!existsCategory) {
 			throw new CategoryNotFoundException();
-			}
+		}
 		Product product = productRepository.save(Product.convert(productDTO));
 		return DTOConverter.convert(product);
 	}
@@ -54,7 +56,8 @@ public class ProductService {
 		Optional<Product> product = productRepository.findById(productId);
 		if (product.isPresent()) {
 			productRepository.delete(product.get());
+		} else {
+			throw new ProductNotFoundException();
 		}
-		throw new ProductNotFoundException();
 	}
 }

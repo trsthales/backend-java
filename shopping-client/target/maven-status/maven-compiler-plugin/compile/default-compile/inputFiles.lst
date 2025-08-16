@@ -1,5 +1,10 @@
-/root/eclipse-workspace/shopping-client/src/main/java/dto/ItemDTO.java
-/root/eclipse-workspace/shopping-client/src/main/java/dto/ShopDTO.java
-/root/eclipse-workspace/shopping-client/src/main/java/dto/ProductDTO.java
-/root/eclipse-workspace/shopping-client/src/main/java/dto/CategoryDTO.java
-/root/eclipse-workspace/shopping-client/src/main/java/dto/UserDTO.java
+/home/thales/Projetos/backend-java/shopping-client/src/main/java/dto/ShopReportDTO.java
+/home/thales/Projetos/backend-java/shopping-client/src/main/java/exception/UserNotFoundException.java
+/home/thales/Projetos/backend-java/shopping-client/src/main/java/dto/UserDTO.java
+/home/thales/Projetos/backend-java/shopping-client/src/main/java/dto/ItemDTO.java
+/home/thales/Projetos/backend-java/shopping-client/src/main/java/dto/ErrorDTO.java
+/home/thales/Projetos/backend-java/shopping-client/src/main/java/dto/CategoryDTO.java
+/home/thales/Projetos/backend-java/shopping-client/src/main/java/exception/ProductNotFoundException.java
+/home/thales/Projetos/backend-java/shopping-client/src/main/java/exception/CategoryNotFoundException.java
+/home/thales/Projetos/backend-java/shopping-client/src/main/java/dto/ProductDTO.java
+/home/thales/Projetos/backend-java/shopping-client/src/main/java/dto/ShopDTO.java
